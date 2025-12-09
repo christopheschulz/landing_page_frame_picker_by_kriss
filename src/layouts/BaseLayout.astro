@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getTranslations, type Locale } from '../i18n/translations';
+
+interface Props {
+  title: string;
+  description: string;
+  locale?: Locale;
+  canonicalPath?: string;
+}
+
+const {
+  title,
+  description,
+  locale = 'en',
+  canonicalPath = ''
+} = Astro.props;
+
+const t = getTranslations(locale);
+const siteUrl = 'https://framepickerbykriss.com';
+
+// Generate alternate URLs for hreflang
+const alternateUrls = {
+  en: `${siteUrl}${canonicalPath}`,
+  fr: `${siteUrl}/fr${canonicalPath}`,
+  de: `${siteUrl}/de${canonicalPath}`,
+};
+---
+
+<!DOCTYPE html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="video, frame, extract, screenshot, capture, export, image, mark, bookmark, timeline, png, jpeg, movie, clip, scene, macOS" />
+    <meta name="author" content="Kriss" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={alternateUrls[locale]} />
+    <meta property="og:image" content={`${siteUrl}/og-image.png`} />
+    <meta property="og:locale" content={locale === 'en' ? 'en_US' : locale === 'fr' ? 'fr_FR' : 'de_DE'} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}/og-image.png`} />
+
+    <!-- Canonical & Hreflang -->
+    <link rel="canonical" href={alternateUrls[locale]} />
+    <link rel="alternate" hreflang="en" href={alternateUrls.en} />
+    <link rel="alternate" hreflang="fr" href={alternateUrls.fr} />
+    <link rel="alternate" hreflang="de" href={alternateUrls.de} />
+    <link rel="alternate" hreflang="x-default" href={alternateUrls.en} />
+
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <a href="#main-content" class="skip-link">
+      {locale === 'en' ? 'Skip to main content' : locale === 'fr' ? 'Aller au contenu principal' : 'Zum Hauptinhalt springen'}
+    </a>
+
+    <Header locale={locale} />
+
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+
+    <Footer locale={locale} />
+  </body>
+</html>

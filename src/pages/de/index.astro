@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Features from '../../components/Features.astro';
+import Pricing from '../../components/Pricing.astro';
+import { getTranslations } from '../../i18n/translations';
+
+const locale = 'de';
+const t = getTranslations(locale);
+---
+
+<BaseLayout
+  title={`${t.siteTitle} - ${t.hero.tagline}`}
+  description={t.siteDescription}
+  locale={locale}
+  canonicalPath="/"
+>
+  <Hero locale={locale} />
+  <Features locale={locale} />
+  <Pricing locale={locale} />
+</BaseLayout>

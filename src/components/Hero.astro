@@ -1,0 +1,71 @@
+---
+import { getTranslations, type Locale } from '../i18n/translations';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+---
+
+<section class="relative overflow-hidden py-20 sm:py-32">
+  <!-- Background gradient -->
+  <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-primary)]/10 to-transparent pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-bg-card)] border border-[var(--color-border)] text-sm text-[var(--color-text-secondary)] mb-8">
+        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true"></span>
+        macOS 13.0+
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--color-text-primary)] mb-6 tracking-tight">
+        {t.hero.tagline}
+      </h1>
+
+      <!-- Description -->
+      <p class="max-w-2xl mx-auto text-lg sm:text-xl text-[var(--color-text-secondary)] mb-10">
+        {t.hero.description}
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <!-- App Store Button (placeholder) -->
+        <a
+          href="#"
+          class="inline-flex items-center gap-3 px-6 py-3 bg-[var(--color-text-primary)] text-[var(--color-bg-dark)] rounded-xl font-medium hover:bg-[var(--color-text-secondary)] transition-colors"
+          aria-label={t.hero.downloadButton}
+        >
+          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          <div class="text-left">
+            <div class="text-xs opacity-75">{t.hero.comingSoon}</div>
+            <div class="text-sm font-semibold">Mac App Store</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Screenshot placeholder -->
+      <div class="mt-16 relative">
+        <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-dark)] via-transparent to-transparent z-10 pointer-events-none" aria-hidden="true"></div>
+        <div class="relative mx-auto max-w-4xl rounded-xl overflow-hidden border border-[var(--color-border)] bg-[var(--color-bg-card)] shadow-2xl">
+          <!-- Placeholder for app screenshot -->
+          <div class="aspect-video flex items-center justify-center bg-gradient-to-br from-[var(--color-bg-card)] to-[var(--color-bg-dark)]">
+            <div class="text-center p-8">
+              <svg class="w-24 h-24 mx-auto text-[var(--color-primary)] opacity-50 mb-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="6" width="28" height="20" rx="3" stroke="currentColor" stroke-width="2"/>
+                <path d="M13 12L20 16L13 20V12Z" fill="currentColor"/>
+                <circle cx="26" cy="10" r="2" fill="currentColor"/>
+              </svg>
+              <p class="text-[var(--color-text-secondary)]">App screenshot coming soon</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

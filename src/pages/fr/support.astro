@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations } from '../../i18n/translations';
+
+const locale = 'fr';
+const t = getTranslations(locale);
+---
+
+<BaseLayout
+  title={`${t.support.title} - Frame Picker By Kriss`}
+  description={t.support.subtitle}
+  locale={locale}
+  canonicalPath="/support"
+>
+  <div class="py-16 sm:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <header class="text-center mb-16">
+        <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)] mb-4">
+          {t.support.title}
+        </h1>
+        <p class="text-lg text-[var(--color-text-secondary)]">
+          {t.support.subtitle}
+        </p>
+      </header>
+
+      <!-- FAQ Section -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-semibold text-[var(--color-text-primary)] mb-8">
+          {t.support.faq.title}
+        </h2>
+
+        <div class="space-y-4">
+          {t.support.faq.items.map((item, index) => (
+            <details class="group bg-[var(--color-bg-card)] rounded-xl border border-[var(--color-border)] overflow-hidden">
+              <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                <span class="font-medium text-[var(--color-text-primary)] pr-4">
+                  {item.question}
+                </span>
+                <svg
+                  class="w-5 h-5 text-[var(--color-text-secondary)] transition-transform group-open:rotate-180"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <div class="px-6 pb-6 text-[var(--color-text-secondary)]">
+                {item.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="bg-[var(--color-bg-card)] rounded-2xl border border-[var(--color-border)] p-8 text-center">
+        <h2 class="text-2xl font-semibold text-[var(--color-text-primary)] mb-4">
+          {t.support.contact.title}
+        </h2>
+        <p class="text-[var(--color-text-secondary)] mb-6">
+          {t.support.contact.description}
+        </p>
+        <a
+          href={`mailto:${t.support.contact.email}`}
+          class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-primary)] text-white rounded-xl font-medium hover:bg-[var(--color-primary-dark)] transition-colors"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          {t.support.contact.button}
+        </a>
+        <p class="mt-4 text-sm text-[var(--color-text-secondary)]">
+          {t.support.contact.email}
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

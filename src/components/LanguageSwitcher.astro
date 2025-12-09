@@ -1,0 +1,47 @@
+---
+import type { Locale } from '../i18n/translations';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+// Get current path without locale prefix
+const pathname = Astro.url.pathname;
+let basePath = pathname;
+if (pathname.startsWith('/fr')) {
+  basePath = pathname.replace(/^\/fr/, '') || '/';
+} else if (pathname.startsWith('/de')) {
+  basePath = pathname.replace(/^\/de/, '') || '/';
+}
+
+const languages = [
+  { code: 'en', label: 'EN', href: basePath },
+  { code: 'fr', label: 'FR', href: `/fr${basePath}` },
+  { code: 'de', label: 'DE', href: `/de${basePath}` },
+] as const;
+---
+
+<div class="flex items-center gap-1 text-sm" role="navigation" aria-label="Language switcher">
+  {languages.map((lang, index) => (
+    <>
+      <a
+        href={lang.href}
+        class:list={[
+          "px-2 py-1 rounded transition-colors",
+          locale === lang.code
+            ? "bg-[var(--color-primary)] text-white font-medium"
+            : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-card)]"
+        ]}
+        aria-current={locale === lang.code ? 'page' : undefined}
+        lang={lang.code}
+      >
+        {lang.label}
+      </a>
+      {index < languages.length - 1 && (
+        <span class="text-[var(--color-border)]" aria-hidden="true">|</span>
+      )}
+    </>
+  ))}
+</div>

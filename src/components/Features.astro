@@ -1,0 +1,105 @@
+---
+import { getTranslations, type Locale } from '../i18n/translations';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+
+const featureItems = t.features.items;
+const features = [
+  {
+    icon: 'playback',
+    title: featureItems.playback.title,
+    description: featureItems.playback.description,
+  },
+  {
+    icon: 'marking',
+    title: featureItems.marking.title,
+    description: featureItems.marking.description,
+  },
+  {
+    icon: 'export',
+    title: featureItems.exporting.title,
+    description: featureItems.exporting.description,
+  },
+  {
+    icon: 'shortcuts',
+    title: featureItems.shortcuts.title,
+    description: featureItems.shortcuts.description,
+  },
+  {
+    icon: 'projects',
+    title: featureItems.projects.title,
+    description: featureItems.projects.description,
+  },
+  {
+    icon: 'privacy',
+    title: featureItems.privacy.title,
+    description: featureItems.privacy.description,
+  },
+];
+---
+
+<section id="features" class="py-20 sm:py-32 bg-[var(--color-bg-card)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)] mb-4">
+        {t.features.title}
+      </h2>
+      <p class="max-w-2xl mx-auto text-lg text-[var(--color-text-secondary)]">
+        {t.features.subtitle}
+      </p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {features.map((feature) => (
+        <article class="p-6 rounded-xl bg-[var(--color-bg-dark)] border border-[var(--color-border)] hover:border-[var(--color-primary)]/50 transition-colors">
+          <div class="w-12 h-12 rounded-lg bg-[var(--color-primary)]/10 flex items-center justify-center mb-4">
+            {feature.icon === 'playback' && (
+              <svg class="w-6 h-6 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            )}
+            {feature.icon === 'marking' && (
+              <svg class="w-6 h-6 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+              </svg>
+            )}
+            {feature.icon === 'export' && (
+              <svg class="w-6 h-6 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+              </svg>
+            )}
+            {feature.icon === 'shortcuts' && (
+              <svg class="w-6 h-6 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+              </svg>
+            )}
+            {feature.icon === 'projects' && (
+              <svg class="w-6 h-6 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+              </svg>
+            )}
+            {feature.icon === 'privacy' && (
+              <svg class="w-6 h-6 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            )}
+          </div>
+          <h3 class="text-lg font-semibold text-[var(--color-text-primary)] mb-2">
+            {feature.title}
+          </h3>
+          <p class="text-[var(--color-text-secondary)]">
+            {feature.description}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

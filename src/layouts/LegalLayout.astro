@@ -1,0 +1,68 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { getTranslations, getLocalizedPath, type Locale } from '../i18n/translations';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  canonicalPath: string;
+  lastUpdated: string;
+}
+
+const { title, description, locale, canonicalPath, lastUpdated } = Astro.props;
+const t = getTranslations(locale);
+---
+
+<BaseLayout
+  title={`${title} - Frame Picker By Kriss`}
+  description={description}
+  locale={locale}
+  canonicalPath={canonicalPath}
+>
+  <div class="py-16 sm:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Back link -->
+      <a
+        href={getLocalizedPath('/', locale)}
+        class="inline-flex items-center gap-2 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors mb-8"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        {t.legal.backToHome}
+      </a>
+
+      <!-- Header -->
+      <header class="mb-12">
+        <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)] mb-4">
+          {title}
+        </h1>
+        <p class="text-[var(--color-text-secondary)]">
+          {t.legal.lastUpdated} {lastUpdated}
+        </p>
+      </header>
+
+      <!-- Content -->
+      <article class="prose prose-invert prose-lg max-w-none
+        prose-headings:text-[var(--color-text-primary)]
+        prose-p:text-[var(--color-text-secondary)]
+        prose-li:text-[var(--color-text-secondary)]
+        prose-strong:text-[var(--color-text-primary)]
+        prose-a:text-[var(--color-primary)] prose-a:no-underline hover:prose-a:underline
+        prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
+        prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+        prose-ul:list-disc prose-ul:pl-6
+        prose-hr:border-[var(--color-border)]
+      ">
+        <slot />
+      </article>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .prose :global(hr) {
+    margin: 2rem 0;
+  }
+</style>

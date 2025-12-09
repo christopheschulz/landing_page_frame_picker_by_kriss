@@ -1,0 +1,76 @@
+---
+import { getTranslations, getLocalizedPath, type Locale } from '../i18n/translations';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-[var(--color-bg-card)] border-t border-[var(--color-border)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Brand -->
+      <div>
+        <a href={getLocalizedPath('/', locale)} class="flex items-center gap-2 text-xl font-semibold text-[var(--color-text-primary)]">
+          <svg class="w-8 h-8 text-[var(--color-primary)]" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="6" width="28" height="20" rx="3" stroke="currentColor" stroke-width="2"/>
+            <path d="M13 12L20 16L13 20V12Z" fill="currentColor"/>
+            <circle cx="26" cy="10" r="2" fill="currentColor"/>
+          </svg>
+          Frame Picker
+        </a>
+        <p class="mt-4 text-[var(--color-text-secondary)]">
+          {t.footer.tagline}
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h3 class="font-semibold text-[var(--color-text-primary)] mb-4">Links</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href={getLocalizedPath('/privacy', locale)} class="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors">
+              {t.footer.links.privacy}
+            </a>
+          </li>
+          <li>
+            <a href={getLocalizedPath('/terms', locale)} class="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors">
+              {t.footer.links.terms}
+            </a>
+          </li>
+          <li>
+            <a href={getLocalizedPath('/support', locale)} class="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors">
+              {t.footer.links.support}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="font-semibold text-[var(--color-text-primary)] mb-4">Contact</h3>
+        <a href="mailto:contact@codebykriss.fr" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors">
+          contact@codebykriss.fr
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="mt-12 pt-8 border-t border-[var(--color-border)] flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="text-[var(--color-text-secondary)] text-sm">
+        &copy; {currentYear} {t.footer.copyright}
+      </p>
+      <p class="text-[var(--color-text-secondary)] text-sm flex items-center gap-1">
+        {t.footer.madeWith}
+        <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 20 20" aria-label="love">
+          <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+        </svg>
+        {t.footer.byKriss}
+      </p>
+    </div>
+  </div>
+</footer>
