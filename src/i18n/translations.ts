@@ -446,9 +446,10 @@ export function getLocaleFromUrl(url: URL): Locale {
   return 'en';
 }
 
-export function getLocalizedPath(path: string, locale: Locale): string {
+export function getLocalizedPath(path: string, locale: Locale, base: string = ''): string {
+  const cleanBase = base.replace(/\/$/, '');
   if (locale === 'en') {
-    return path;
+    return `${cleanBase}${path}`;
   }
-  return `/${locale}${path}`;
+  return `${cleanBase}/${locale}${path === '/' ? '' : path}`;
 }
