@@ -1,5 +1,6 @@
 ---
 import { getTranslations, type Locale } from '../i18n/translations';
+import appIcon from '../../public/images/app-icon.png';
 
 interface Props {
   locale: Locale;
@@ -56,7 +57,7 @@ const t = getTranslations(locale);
           <!-- Placeholder for app screenshot -->
           <div class="aspect-video flex items-center justify-center bg-gradient-to-br from-[var(--color-bg-card)] to-[var(--color-bg-dark)]">
             <div class="text-center p-8">
-              <img src={`${import.meta.env.BASE_URL}images/app-icon.png`} alt="Frame Picker By Kriss" class="w-32 h-32 mx-auto rounded-2xl shadow-lg mb-4" />
+              <img src={appIcon.src} alt="Frame Picker By Kriss" class="w-32 h-32 mx-auto rounded-2xl shadow-lg mb-4" />
               <p class="text-[var(--color-text-secondary)]">App screenshot coming soon</p>
             </div>
           </div>
