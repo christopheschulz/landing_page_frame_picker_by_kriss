@@ -16,11 +16,7 @@ const currentYear = new Date().getFullYear();
       <!-- Brand -->
       <div>
         <a href={getLocalizedPath('/', locale)} class="flex items-center gap-2 text-xl font-semibold text-[var(--color-text-primary)]">
-          <svg class="w-8 h-8 text-[var(--color-primary)]" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="2" y="6" width="28" height="20" rx="3" stroke="currentColor" stroke-width="2"/>
-            <path d="M13 12L20 16L13 20V12Z" fill="currentColor"/>
-            <circle cx="26" cy="10" r="2" fill="currentColor"/>
-          </svg>
+          <img src={`${import.meta.env.BASE_URL}images/app-icon.png`} alt="Frame Picker" class="w-8 h-8 rounded-lg" />
           Frame Picker
         </a>
         <p class="mt-4 text-[var(--color-text-secondary)]">
