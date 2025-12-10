@@ -147,7 +147,7 @@ export const translations = {
   fr: {
     // Meta
     siteTitle: "Frame Picker By Kriss",
-    siteDescription: "Une application macOS native pour extraire des images de vos vidéos avec un marquage précis et un export haute qualité.",
+    siteDescription: "Une application macOS native pour capturer des images de vos vidéos avec un marquage précis et un export haute qualité.",
 
     // Navigation
     nav: {
@@ -159,8 +159,8 @@ export const translations = {
 
     // Hero
     hero: {
-      tagline: "Extrayez des images de vos vidéos",
-      description: "Une application macOS native pour extraire des images de vos vidéos avec un marquage précis et un export haute qualité.",
+      tagline: "Capturez des images depuis vos vidéos",
+      description: "Une application macOS native pour capturer des images de vos vidéos avec un marquage précis et un export haute qualité.",
       downloadButton: "Télécharger sur le Mac App Store",
       comingSoon: "Bientôt disponible",
     },
@@ -168,7 +168,7 @@ export const translations = {
     // Features
     features: {
       title: "Fonctionnalités puissantes",
-      subtitle: "Tout ce dont vous avez besoin pour extraire les images parfaites de vos vidéos",
+      subtitle: "Tout ce dont vous avez besoin pour capturer les images parfaites de vos vidéos",
       items: {
         playback: {
           title: "Lecture vidéo précise",
