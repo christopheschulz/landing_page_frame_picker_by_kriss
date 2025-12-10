@@ -5,8 +5,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://christopheschulz.github.io',
-  base: '/landing_page_frame_picker_by_kriss',
+  site: 'https://framepickerbykriss.com',
+  // base: '/landing_page_frame_picker_by_kriss', // Removed: using custom domain
   output: 'static',
   i18n: {
     defaultLocale: 'en',
