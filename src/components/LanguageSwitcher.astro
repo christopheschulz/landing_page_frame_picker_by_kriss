@@ -35,7 +35,7 @@ const languages = [
       <a
         href={lang.href}
         class:list={[
-          "px-2 py-1 rounded transition-colors",
+          "px-2 py-1 rounded transition-colors lang-switch",
           locale === lang.code
             ? "bg-[var(--color-primary)] text-white font-medium"
             : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-card)]"
@@ -51,3 +51,12 @@ const languages = [
     </>
   ))}
 </div>
+
+<script>
+  // Mark that user manually chose a language
+  document.querySelectorAll('.lang-switch').forEach(link => {
+    link.addEventListener('click', () => {
+      sessionStorage.setItem('lang-redirected', 'true');
+    });
+  });
+</script>

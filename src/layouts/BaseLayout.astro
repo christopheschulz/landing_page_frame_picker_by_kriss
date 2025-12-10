@@ -64,6 +64,32 @@ const alternateUrls = {
     <link rel="alternate" hreflang="x-default" href={alternateUrls.en} />
 
     <title>{title}</title>
+
+    <!-- Language detection and redirect (only on default English pages) -->
+    {locale === 'en' && (
+      <script is:inline define:vars={{ base: import.meta.env.BASE_URL }}>
+        (function() {
+          // Only redirect if user hasn't already chosen a language
+          if (sessionStorage.getItem('lang-redirected')) return;
+
+          // Get browser language
+          const browserLang = navigator.language || navigator.userLanguage;
+          const langCode = browserLang.split('-')[0].toLowerCase();
+
+          // Supported languages (excluding 'en' since we're already on English)
+          const supportedLangs = ['fr', 'de'];
+
+          if (supportedLangs.includes(langCode)) {
+            sessionStorage.setItem('lang-redirected', 'true');
+            // Get current path after base URL
+            const currentPath = window.location.pathname.replace(base.replace(/\/$/, ''), '') || '/';
+            const cleanBase = base.replace(/\/$/, '');
+            const newPath = cleanBase + '/' + langCode + (currentPath === '/' ? '' : currentPath);
+            window.location.replace(newPath);
+          }
+        })();
+      </script>
+    )}
   </head>
   <body class="min-h-screen flex flex-col">
     <a href="#main-content" class="skip-link">
