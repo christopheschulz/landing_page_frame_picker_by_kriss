@@ -62,7 +62,8 @@ export const translations = {
         description: "Try Frame Picker",
         features: [
           "5 frame exports total",
-          "JPEG Low quality only",
+          "All formats (PNG, TIFF, WebP, JPEG)",
+          "All quality levels",
           "All playback features",
           "All marking features",
           "Project save/load",
@@ -206,7 +207,8 @@ export const translations = {
         description: "Essayez Frame Picker",
         features: [
           "5 exports d'images au total",
-          "JPEG basse qualité uniquement",
+          "Tous les formats (PNG, TIFF, WebP, JPEG)",
+          "Tous les niveaux de qualité",
           "Toutes les fonctions de lecture",
           "Toutes les fonctions de marquage",
           "Sauvegarde/chargement de projets",
@@ -350,7 +352,8 @@ export const translations = {
         description: "Frame Picker testen",
         features: [
           "5 Frame-Exporte insgesamt",
-          "Nur JPEG niedrige Qualität",
+          "Alle Formate (PNG, TIFF, WebP, JPEG)",
+          "Alle Qualitätsstufen",
           "Alle Wiedergabefunktionen",
           "Alle Markierungsfunktionen",
           "Projekt speichern/laden",
