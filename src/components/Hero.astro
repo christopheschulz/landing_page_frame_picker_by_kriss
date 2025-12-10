@@ -50,19 +50,55 @@ const t = getTranslations(locale);
         </a>
       </div>
 
-      <!-- Screenshot placeholder -->
+      <!-- App Screenshots -->
       <div class="mt-16 relative">
         <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-dark)] via-transparent to-transparent z-10 pointer-events-none" aria-hidden="true"></div>
         <div class="relative mx-auto max-w-4xl rounded-xl overflow-hidden border border-[var(--color-border)] bg-[var(--color-bg-card)] shadow-2xl">
-          <!-- Placeholder for app screenshot -->
-          <div class="aspect-video flex items-center justify-center bg-gradient-to-br from-[var(--color-bg-card)] to-[var(--color-bg-dark)]">
-            <div class="text-center p-8">
-              <img src={appIcon.src} alt="Frame Picker By Kriss" class="w-32 h-32 mx-auto rounded-2xl shadow-lg mb-4" />
-              <p class="text-[var(--color-text-secondary)]">App screenshot coming soon</p>
+          <div class="screenshot-carousel relative">
+            <img src="/images/screenshots/screenshot-1.png" alt="Frame Picker By Kriss - Screenshot 1" class="screenshot-slide w-full" />
+            <img src="/images/screenshots/screenshot-2.jpg" alt="Frame Picker By Kriss - Screenshot 2" class="screenshot-slide w-full hidden" />
+            <img src="/images/screenshots/screenshot-3.jpg" alt="Frame Picker By Kriss - Screenshot 3" class="screenshot-slide w-full hidden" />
+            <img src="/images/screenshots/screenshot-4.jpg" alt="Frame Picker By Kriss - Screenshot 4" class="screenshot-slide w-full hidden" />
+
+            <!-- Navigation dots -->
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+              <button class="carousel-dot w-2 h-2 rounded-full bg-white/80 transition-all" data-index="0" aria-label="Screenshot 1"></button>
+              <button class="carousel-dot w-2 h-2 rounded-full bg-white/40 hover:bg-white/60 transition-all" data-index="1" aria-label="Screenshot 2"></button>
+              <button class="carousel-dot w-2 h-2 rounded-full bg-white/40 hover:bg-white/60 transition-all" data-index="2" aria-label="Screenshot 3"></button>
+              <button class="carousel-dot w-2 h-2 rounded-full bg-white/40 hover:bg-white/60 transition-all" data-index="3" aria-label="Screenshot 4"></button>
             </div>
           </div>
         </div>
       </div>
+
+      <script>
+        const slides = document.querySelectorAll('.screenshot-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let currentIndex = 0;
+
+        function showSlide(index: number) {
+          slides.forEach((slide, i) => {
+            slide.classList.toggle('hidden', i !== index);
+          });
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('bg-white/80', i === index);
+            dot.classList.toggle('bg-white/40', i !== index);
+          });
+          currentIndex = index;
+        }
+
+        dots.forEach(dot => {
+          dot.addEventListener('click', () => {
+            const index = parseInt(dot.getAttribute('data-index') || '0');
+            showSlide(index);
+          });
+        });
+
+        // Auto-advance every 4 seconds
+        setInterval(() => {
+          showSlide((currentIndex + 1) % slides.length);
+        }, 4000);
+      </script>
     </div>
   </div>
 </section>
