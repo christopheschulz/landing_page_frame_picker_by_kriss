@@ -45,6 +45,11 @@ const base = import.meta.env.BASE_URL;
               {t.footer.links.support}
             </a>
           </li>
+          <li>
+            <a href={getLocalizedPath('/legal', locale, base)} class="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors">
+              {t.footer.links.legal}
+            </a>
+          </li>
         </ul>
       </div>
 
