@@ -83,7 +83,6 @@ export const translations = {
           "Project save/load",
           "Priority support",
         ],
-        button: "Unlock Full Version",
       },
     },
 
@@ -229,7 +228,6 @@ export const translations = {
           "Sauvegarde/chargement de projets",
           "Support prioritaire",
         ],
-        button: "Débloquer la version complète",
       },
     },
 
@@ -375,7 +373,6 @@ export const translations = {
           "Projekt speichern/laden",
           "Prioritäts-Support",
         ],
-        button: "Vollversion freischalten",
       },
     },
 

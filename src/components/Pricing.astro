@@ -52,7 +52,9 @@ const t = getTranslations(locale);
         </ul>
 
         <a
-          href="#"
+          href="https://apps.apple.com/fr/app/framepickerbykriss/id6756105530?mt=12"
+          target="_blank"
+          rel="noopener noreferrer"
           class="block w-full py-3 px-6 text-center rounded-xl border border-[var(--color-border)] text-[var(--color-text-primary)] font-medium hover:bg-[var(--color-bg-card-hover)] transition-colors"
         >
           {t.pricing.free.button}
@@ -81,9 +83,12 @@ const t = getTranslations(locale);
           <span class="text-4xl font-bold text-[var(--color-text-primary)]">
             {t.pricing.premium.price}
           </span>
+          <p class="text-sm text-[var(--color-text-secondary)] mt-1">
+            via App Store
+          </p>
         </div>
 
-        <ul class="space-y-3 mb-8">
+        <ul class="space-y-3">
           {t.pricing.premium.features.map((feature) => (
             <li class="flex items-start gap-3">
               <svg class="w-5 h-5 text-[var(--color-primary)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -93,13 +98,6 @@ const t = getTranslations(locale);
             </li>
           ))}
         </ul>
-
-        <a
-          href="#"
-          class="block w-full py-3 px-6 text-center rounded-xl bg-[var(--color-primary)] text-white font-medium hover:bg-[var(--color-primary-dark)] transition-colors"
-        >
-          {t.pricing.premium.button}
-        </a>
       </div>
     </div>
   </div>

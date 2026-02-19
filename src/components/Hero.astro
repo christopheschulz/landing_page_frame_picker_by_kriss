@@ -53,11 +53,11 @@ const t = getTranslations(locale);
       <div class="mt-16 relative">
         <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-dark)] via-transparent to-transparent z-10 pointer-events-none" aria-hidden="true"></div>
         <div class="relative mx-auto max-w-4xl rounded-xl overflow-hidden border border-[var(--color-border)] bg-[var(--color-bg-card)] shadow-2xl">
-          <div class="screenshot-carousel relative">
-            <img src="/images/screenshots/screenshot-1.png" alt="Frame Picker By Kriss - Screenshot 1" class="screenshot-slide w-full" />
-            <img src="/images/screenshots/screenshot-2.jpg" alt="Frame Picker By Kriss - Screenshot 2" class="screenshot-slide w-full hidden" />
-            <img src="/images/screenshots/screenshot-3.jpg" alt="Frame Picker By Kriss - Screenshot 3" class="screenshot-slide w-full hidden" />
-            <img src="/images/screenshots/screenshot-4.jpg" alt="Frame Picker By Kriss - Screenshot 4" class="screenshot-slide w-full hidden" />
+          <div class="screenshot-carousel">
+            <img src="/images/screenshots/screenshot-1.png" alt="Frame Picker By Kriss - Screenshot 1" class="screenshot-slide" />
+            <img src="/images/screenshots/screenshot-2.jpg" alt="Frame Picker By Kriss - Screenshot 2" class="screenshot-slide opacity-0" />
+            <img src="/images/screenshots/screenshot-3.jpg" alt="Frame Picker By Kriss - Screenshot 3" class="screenshot-slide opacity-0" />
+            <img src="/images/screenshots/screenshot-4.jpg" alt="Frame Picker By Kriss - Screenshot 4" class="screenshot-slide opacity-0" />
 
             <!-- Navigation dots -->
             <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
@@ -77,7 +77,7 @@ const t = getTranslations(locale);
 
         function showSlide(index: number) {
           slides.forEach((slide, i) => {
-            slide.classList.toggle('hidden', i !== index);
+            slide.classList.toggle('opacity-0', i !== index);
           });
           dots.forEach((dot, i) => {
             dot.classList.toggle('bg-white/80', i === index);
@@ -101,3 +101,20 @@ const t = getTranslations(locale);
     </div>
   </div>
 </section>
+
+<style>
+  .screenshot-carousel {
+    position: relative;
+    aspect-ratio: 8 / 7;
+    overflow: hidden;
+  }
+
+  .screenshot-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.5s ease;
+  }
+</style>
