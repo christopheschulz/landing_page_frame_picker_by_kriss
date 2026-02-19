@@ -88,7 +88,7 @@ export const translations = {
 
     // Footer
     footer: {
-      tagline: "Your videos, your frames, your privacy.",
+      tagline: "Capture the perfect moment.",
       links: {
         privacy: "Privacy Policy",
         terms: "Terms of Use",
@@ -233,7 +233,7 @@ export const translations = {
 
     // Footer
     footer: {
-      tagline: "Vos vidéos, vos images, votre vie privée.",
+      tagline: "Capturez l'instant parfait.",
       links: {
         privacy: "Politique de confidentialité",
         terms: "Conditions d'utilisation",
@@ -378,7 +378,7 @@ export const translations = {
 
     // Footer
     footer: {
-      tagline: "Ihre Videos, Ihre Frames, Ihre Privatsphäre.",
+      tagline: "Den perfekten Moment einfangen.",
       links: {
         privacy: "Datenschutzerklärung",
         terms: "Nutzungsbedingungen",
